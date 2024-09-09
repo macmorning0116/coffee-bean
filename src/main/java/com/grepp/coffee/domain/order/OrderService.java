@@ -48,26 +48,7 @@ public class OrderService {
         if (findOrder == null) {
             throw new EntityNotFoundException("주문을 찾을 수 없음");
         }
-        OrderResponseDTO result = new OrderResponseDTO(
-                findOrder.getOrderId(),
-                findOrder.getEmail(),
-                findOrder.getAddress(),
-                findOrder.getPostcode(),
-                findOrder.getOrderStatus(),
-                findOrder.getCreatedAt(),
-                findOrder.getUpdatedAt(),
-                findOrder.getOrderItems().stream().map(orderItem -> new OrderItemResponseDTO(
-                        orderItem.getSeq(),
-                        orderItem.getOrder().getOrderId(),
-                        orderItem.getProduct().getProductId(),
-                        orderItem.getProduct().getProductName(),
-                        orderItem.getCategory(),
-                        orderItem.getPrice(),
-                        orderItem.getQuantity(),
-                        orderItem.getCreatedAt(),
-                        orderItem.getUpdatedAt()
-                )).collect(Collectors.toList())
-        );
+        OrderResponseDTO result = getOrderResponseDTO(findOrder);
 
         return result;
     }
@@ -217,7 +198,13 @@ public class OrderService {
             throw new EntityNotFoundException("해당 이메일로 주문한 이력이 없습니다.");
         }
 
-        return orders.stream().map(order -> new OrderResponseDTO(
+        return orders.stream().map(this::getOrderResponseDTO
+        ).collect(Collectors.toList());
+    }
+
+    // Order -> OrderResponseDTO 변환
+    private OrderResponseDTO getOrderResponseDTO(Order order) {
+        return new OrderResponseDTO(
                 order.getOrderId(),
                 order.getEmail(),
                 order.getAddress(),
@@ -235,8 +222,7 @@ public class OrderService {
                         orderItem.getQuantity(),
                         orderItem.getCreatedAt(),
                         orderItem.getUpdatedAt()
-                )).collect(Collectors.toList())
-        )).collect(Collectors.toList());
+                )).collect(Collectors.toList()));
     }
 
 
