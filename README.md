@@ -70,11 +70,11 @@ Order, OrderItem, Product 에 대해 각각 저장/수정을 분리하여 검증
 
 **문제상황**
 - Order Entity 문제발생 부분<br>
-<img width="559" alt="스크린샷 2024-09-09 오후 5 32 10" src="https://github.com/user-attachments/assets/b21ef2c8-829e-4993-b7a0-322360e7a65b">
+    <img width="559" alt="스크린샷 2024-09-09 오후 5 32 10" src="https://github.com/user-attachments/assets/b21ef2c8-829e-4993-b7a0-322360e7a65b">
 <br>
 
 - OrderItem Entity 문제발생 부분<br>
-<img width="366" alt="스크린샷 2024-09-09 오후 5 35 14" src="https://github.com/user-attachments/assets/503b7671-d32d-4107-841a-dd11eb353b4f">
+    <img width="366" alt="스크린샷 2024-09-09 오후 5 35 14" src="https://github.com/user-attachments/assets/503b7671-d32d-4107-841a-dd11eb353b4f">
 
 
 OrderItem Entity에서 Order Entity를 참조하고 있기 때문에 `List<OrderItem>` 부분에서 순환참조가 발생하였습니다.
@@ -82,11 +82,11 @@ OrderItem Entity에서 Order Entity를 참조하고 있기 때문에 `List<Order
 
 **문제해결**
 - OrderItemResponseDTO<br>
-<img width="272" alt="스크린샷 2024-09-09 오후 6 47 00" src="https://github.com/user-attachments/assets/931fd6b1-12c6-406f-ab49-958227c31df9">
+    <img width="272" alt="스크린샷 2024-09-09 오후 6 47 00" src="https://github.com/user-attachments/assets/931fd6b1-12c6-406f-ab49-958227c31df9">
 <br>
 
 - OrderResponseDTO<br>
-<img width="836" alt="스크린샷 2024-09-09 오후 6 46 42" src="https://github.com/user-attachments/assets/ad36f780-e42e-43f7-8ca6-5091d6ebd717">
+    <img width="836" alt="스크린샷 2024-09-09 오후 6 46 42" src="https://github.com/user-attachments/assets/ad36f780-e42e-43f7-8ca6-5091d6ebd717">
 
 클라이언트에 Entity를 직접 반환하는 것이 아닌 DTO를 활용하여 순환참조 문제를 해결하였습니다.
 
