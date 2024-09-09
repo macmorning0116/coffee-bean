@@ -1,4 +1,4 @@
-# Coffee Bean Sale
+# 원두 판매 REST API
 **SpringBoot와 JPA를 활용한 REST API 학습프로젝트 입니다.**
 
 ## 패키지 구조
