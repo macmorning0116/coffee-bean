@@ -59,7 +59,7 @@
 - OrderEditForm<br>
   <img width="249" alt="스크린샷 2024-09-09 오후 7 01 50" src="https://github.com/user-attachments/assets/e4fb70f4-e50c-47d8-ad89-4494c2010d25">
 
-- OrderControlle<br>
+- OrderController<br>
   <img width="802" alt="스크린샷 2024-09-09 오후 7 03 16" src="https://github.com/user-attachments/assets/348fa51b-b641-4623-b837-6110d0a81af1">
 
 Order, OrderItem, Product 에 대해 각각 저장/수정을 분리하여 검증값을 지정해주었습니다. 이렇게 하나의 Entity에 관한 저장/수정 검증을 분리함으로써 가독성과 유지보수성을 높이고자 했습니다.
